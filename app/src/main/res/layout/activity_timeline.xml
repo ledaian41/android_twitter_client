@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.codepath.apps.restclienttemplate.activity.TimelineActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_48"
+        android:background="@color/colorPrimary" />
+
+    <com.victor.loading.rotate.RotateLoading
+        android:id="@+id/pbLoading"
+        android:layout_width="@dimen/pb_size"
+        android:layout_height="@dimen/pb_size"
+        android:layout_gravity="center"
+        app:loading_color="@color/colorPrimary"/>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="48sp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvTweet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/space_small" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <com.victor.loading.rotate.RotateLoading
+        android:id="@+id/pbLoadMore"
+        android:layout_width="@dimen/pb_size"
+        android:layout_height="@dimen/pb_size"
+        android:layout_gravity="bottom|center_horizontal"
+        app:loading_color="@color/colorPrimary"/>
+</FrameLayout>

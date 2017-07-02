@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Twitter Client</string>
+    <string name="login_label">Log in</string>
+    <string name="intent_scheme">oauth</string>
+    <string name="intent_host">codepathtweets</string>
+    <string name="sample_text">A drawable resource is a general concept for a graphic that can be drawn to the screen. Drawables are used to define shapes, colors, borders, gradients, etc. which can then be applied to views within an Activity.</string>
+    <string name="sample_date">12/08/2016</string>
+    <string name="sample_username">An Lee</string>
+    <string name="Twitter">Twitter</string>
+    <string name="create">create</string>
+
+</resources>
