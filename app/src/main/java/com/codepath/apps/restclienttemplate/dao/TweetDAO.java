@@ -1,8 +1,5 @@
 package com.codepath.apps.restclienttemplate.dao;
 
-import android.util.Log;
-import android.widget.Toast;
-
 import com.codepath.apps.restclienttemplate.entity.TweetEntity;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
@@ -31,23 +28,13 @@ public class TweetDAO {
                     tweet.getRetweetCount()));
         }
         Realm realm = Realm.getDefaultInstance();
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                realm.copyToRealm(entities);
-            }
-        });
+        realm.executeTransaction(realm1 -> realm1.copyToRealm(entities));
     }
 
     public void clearAll() {
         Realm realm = Realm.getDefaultInstance();
         final RealmResults<TweetEntity> results = realm.where(TweetEntity.class).findAll();
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                results.deleteAllFromRealm();
-            }
-        });
+        realm.executeTransaction(realm1 -> results.deleteAllFromRealm());
     }
 
     public List<Tweet> getAll() {

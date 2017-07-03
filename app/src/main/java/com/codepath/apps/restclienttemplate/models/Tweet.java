@@ -93,10 +93,10 @@ public class Tweet implements Parcelable {
     }
 
     public static ArrayList<Tweet> fromJson(JSONArray jsonArray) {
-        ArrayList<Tweet> tweets = new ArrayList<Tweet>(jsonArray.length());
+        ArrayList<Tweet> tweets = new ArrayList<>(jsonArray.length());
 
         for (int i = 0; i < jsonArray.length(); i++) {
-            JSONObject tweetJson = null;
+            JSONObject tweetJson;
             try {
                 tweetJson = jsonArray.getJSONObject(i);
             } catch (Exception e) {

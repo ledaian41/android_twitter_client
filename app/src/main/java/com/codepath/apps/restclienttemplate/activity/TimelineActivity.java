@@ -87,12 +87,7 @@ public class TimelineActivity extends AppCompatActivity {
         rvTweet.setLayoutManager(layoutManager);
 
         //LoadMore
-        tweetAdapter.setListener(new TweetAdapter.Listener() {
-            @Override
-            public void onLoadMore() {
-                loadMore();
-            }
-        });
+        tweetAdapter.setListener(() -> loadMore());
         //Refresh
         setUpPullToRefresh();
     }
@@ -106,12 +101,7 @@ public class TimelineActivity extends AppCompatActivity {
         resetPage();
         if (isOnline()) {
             pbLoading.start();
-            fetchTweets(new Listener() {
-                @Override
-                public void onResult(List<Tweet> tweets) {
-                    tweetAdapter.setData(tweets);
-                }
-            });
+            fetchTweets(tweets1 -> tweetAdapter.setData(tweets1));
             handleComplete();
         } else {
             getDataOffline();
@@ -127,12 +117,7 @@ public class TimelineActivity extends AppCompatActivity {
         if (isOnline()) {
             pbLoadMore.start();
             nextPage();
-            fetchTweets(new Listener() {
-                @Override
-                public void onResult(List<Tweet> tweets) {
-                    tweetAdapter.appendData(tweets);
-                }
-            });
+            fetchTweets(tweets1 -> tweetAdapter.appendData(tweets1));
             handleComplete();
         } else {
             handleComplete();
@@ -181,12 +166,9 @@ public class TimelineActivity extends AppCompatActivity {
     }
 
     private void setUpPullToRefresh() {
-        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                loadTweets();
-                swipeRefresh.setRefreshing(false);
-            }
+        swipeRefresh.setOnRefreshListener(() -> {
+            loadTweets();
+            swipeRefresh.setRefreshing(false);
         });
         // Configure the refreshing colors
         swipeRefresh.setColorSchemeResources(android.R.color.holo_blue_bright,

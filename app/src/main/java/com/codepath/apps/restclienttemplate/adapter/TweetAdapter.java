@@ -4,12 +4,9 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.codepath.apps.restclienttemplate.R;
-import com.codepath.apps.restclienttemplate.databinding.ItemNoImageTweetBinding;
-import com.codepath.apps.restclienttemplate.databinding.ItemTweetBinding;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.apps.restclienttemplate.viewholder.TweetNoImageViewHolder;
 import com.codepath.apps.restclienttemplate.viewholder.TweetViewHolder;
@@ -46,10 +43,10 @@ public class TweetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         if (viewType == NO_IMAGE) {
-            return new TweetNoImageViewHolder((ItemNoImageTweetBinding) DataBindingUtil
+            return new TweetNoImageViewHolder(DataBindingUtil
                     .inflate(layoutInflater, R.layout.item_no_image_tweet, parent, false));
         } else {
-            return new TweetViewHolder((ItemTweetBinding) DataBindingUtil
+            return new TweetViewHolder(DataBindingUtil
                     .inflate(layoutInflater, R.layout.item_tweet, parent, false));
         }
     }
@@ -67,11 +64,8 @@ public class TweetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             listener.onLoadMore();
         }
         //On Click an item.
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        holder.itemView.setOnClickListener(v -> {
 
-            }
         });
     }
 
